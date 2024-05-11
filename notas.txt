@@ -1,0 +1,15 @@
+PARTE 0
+
+PARTE 1
+    - para transpilar codigo y que sea compatible con versiones más antiguas de js
+    generalmente se utiliza https://babeljs.io
+    - map
+    const m2 = t.map(value => '<li>' + value + '</li>')
+    console.log(m2)
+    // se imprime [ '<li>1</li>', '<li>2</li>', '<li>3</li>' ]
+
+    - "En React, es convencional usar nombres onSomething para props que representan
+    eventos y handleSomething para las definiciones de funciones que controlan los eventos."
+
+    - como nombrar props de eventos https://es.react.dev/learn/responding-to-events#naming-event-handler-props
+PARTE 2
