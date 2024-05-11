@@ -1,1 +1,1 @@
-# Ejercicios del curso de full stack open [fullstackopen](https://fullstackopen.com/)
+# Ejercicios del curso full stack open [fullstackopen](https://fullstackopen.com/)
