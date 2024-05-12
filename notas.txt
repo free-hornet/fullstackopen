@@ -13,3 +13,29 @@ PARTE 1
 
     - como nombrar props de eventos https://es.react.dev/learn/responding-to-events#naming-event-handler-props
 PARTE 2
+    -operador condicional 
+    const result = condition ? val1 : val2
+
+    -servidor
+        se crea un archivo db.json
+
+        formas para ejecutar el servidor:
+
+            1.-
+            se instala el servidor JSON globalmente con:
+                 npm install -g json-server
+            Por defecto, json-server se inicia en el puerto 3000. definimos un puerto alternativo:
+                json-server --port 3001 --watch db.json
+            sin embargo no es necesaria una instalación global
+            se puede ejecutar el json-server con el siguiente comando:
+                npx json-server --port 3001 --watch db.json 
+
+            2.-
+            en la carpeta raiz instalamos:
+                npm install axios
+                npm install json-server --save-dev
+            y modificamos la carpeta package.json en "scripts" añadimos:
+                "server": "json-server -p3001 --watch db.json"
+            luego ejecutamos el server con:
+                npm run server    
+
