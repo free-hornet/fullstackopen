@@ -1,15 +1,21 @@
 /* eslint-disable react/prop-types */
 import { useState, useEffect} from 'react'
+import './index.css'
 import Filter from './components/Filter'
 import PersonForm from './components/PersonForm'
 import Persons from './components/Persons'
 import personService from './services/persons'
+import Notification from './components/Notification'
 
 const App = () => {
   const [persons, setPersons] = useState([])
   const [newName, setNewName] = useState('')
   const [newNumber, setNewNumber] = useState('')
   const [filter, setFilter] = useState('')
+  const [errorMessage, setErrorMessage] = useState(null)
+  const [successfulMessage, setSuccessfulMessage] = useState(null)
+  
+
 
   useEffect(() => {
     personService
@@ -34,8 +40,15 @@ const App = () => {
         .update(personObject.id, personObject)
         .then(returnedPerson => {
           setPersons(persons.map(person => person.id !== personObject.id ? person : returnedPerson))
-        }
-        )
+          })
+        .catch(() => {
+          setErrorMessage(
+            `Information of '${newName}' was already removed from server`
+          )
+          setTimeout(() => {
+            setErrorMessage(null)
+          }, 5000)
+        })
       }
     }
     else {
@@ -45,11 +58,19 @@ const App = () => {
         name: newName,
         number: newNumber
       }
+
+      setSuccessfulMessage(`Added ${newName}`)
+      setTimeout(() => {
+        setSuccessfulMessage(null)
+      }, 3000)
+
       personService
       .create(personObject)
       .then(returnedPerson => {
         setPersons(persons.concat(returnedPerson))
       })
+
+      
     }
     setNewName('')
     setNewNumber('')
@@ -80,6 +101,8 @@ const App = () => {
 
   return (
     <div>
+      <Notification message={successfulMessage} type={'successful'}/>
+      <Notification message={errorMessage} type={'error'}/>
       <h2>Phonebook</h2>
       <Filter filter={filter} handleFilterChange={handleFilterChange} />
       <h3>Add a new</h3>
