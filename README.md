@@ -1,1 +1,1 @@
-# [fullstackopen](https://fullstackopen.com/) Exercises
+# [Full stack open](https://fullstackopen.com/) exercises
